@@ -1,7 +1,6 @@
 package com.iconic.nigel.ui.theme.screens.home
 
-import android.media.Image
-import android.widget.ImageButton
+
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Arrangement
@@ -23,10 +22,14 @@ import androidx.compose.ui.text.font.FontStyle
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import androidx.navigation.NavHostController
+import androidx.navigation.compose.rememberNavController
 import com.iconic.nigel.R
+import com.iconic.nigel.navigation.ROUTE_LOGIN
+import com.iconic.nigel.navigation.ROUTE_REGISTER
 
 @Composable
-fun Home_Screen(modifier: Modifier = Modifier) {
+fun Home_Screen(navController: NavHostController) {
     Column(modifier=Modifier
         .fillMaxSize()
         .background(Color.LightGray),
@@ -38,7 +41,7 @@ fun Home_Screen(modifier: Modifier = Modifier) {
             fontSize = 35.sp ,
         )
 
-        Text( "Welcome to Nigel's App ",
+        Text( "Welcome to BMW ",
             fontSize = 25.sp,
             fontFamily = FontFamily.SansSerif,
             color = Color.DarkGray,
@@ -53,16 +56,29 @@ fun Home_Screen(modifier: Modifier = Modifier) {
         )
         Spacer(modifier=Modifier.height(30.dp) )
 
-        Text("This app is meant to showcase the perfomance of BMW cars " ,
+        Text("We are selling BMW cars .",
             fontSize = 18.sp ,
             fontFamily = FontFamily.SansSerif ,
             color = Color.Black ,
             fontStyle = FontStyle.Normal ,
         )
+        Text("You can login with your details .",
+            fontSize = 18.sp ,
+            fontFamily = FontFamily.SansSerif ,
+            color = Color.Black ,
+            fontStyle = FontStyle.Normal ,
+        )
+        Text( "If you don't have an account you can signup." ,
+            fontSize = 18.sp ,
+            fontFamily = FontFamily.SansSerif ,
+            color = Color.Black ,
+            fontStyle = FontStyle.Normal ,
+        )
+
         Spacer(modifier=Modifier.height(30.dp) )
 
 
-        Button(onClick = {/*TODO*/ },
+        Button(onClick = {navController.navigate(ROUTE_LOGIN) },
             modifier = Modifier.width(300.dp)){
             Text(text = "Login",
                 fontSize = 30.sp,
@@ -70,7 +86,7 @@ fun Home_Screen(modifier: Modifier = Modifier) {
         }
         Spacer(modifier=Modifier.height(30.dp) )
 
-        Button(onClick =  {/*TODO*/ },
+        Button(onClick =  {navController.navigate(ROUTE_REGISTER) },
             modifier = Modifier.width(300.dp)){
             Text(text ="Register",
                 fontSize = 30.sp,
@@ -84,6 +100,6 @@ fun Home_Screen(modifier: Modifier = Modifier) {
 @Preview
 @Composable
 private fun Homeprev() {
-    Home_Screen()
+    Home_Screen(rememberNavController())
 
 }

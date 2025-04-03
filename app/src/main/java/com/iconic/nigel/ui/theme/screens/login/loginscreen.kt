@@ -1,6 +1,7 @@
 package com.iconic.nigel.ui.theme.screens.login
 
 import androidx.compose.foundation.background
+import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Spacer
@@ -29,9 +30,12 @@ import androidx.compose.ui.text.input.TextFieldValue
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import androidx.navigation.NavHostController
+import androidx.navigation.compose.rememberNavController
+import com.iconic.nigel.navigation.ROUTE_REGISTER
 
 @Composable
-fun Login_Screen(modifier: Modifier = Modifier) {
+fun Login_Screen(navController: NavHostController) {
     var email by remember { mutableStateOf(TextFieldValue(""))}
     var password by remember { mutableStateOf(TextFieldValue("")) }
     Column   (horizontalAlignment = Alignment.CenterHorizontally ,
@@ -67,6 +71,11 @@ fun Login_Screen(modifier: Modifier = Modifier) {
             Text("Login",
                 fontSize = 30.sp,)
         }
+        Spacer(modifier = Modifier.height(50.dp))
+        Text("Don't have an account!!!CLICK HERE TO REGISTER",
+            fontSize = 20.sp,
+            fontFamily = FontFamily.SansSerif,
+            modifier = Modifier.clickable { navController.navigate(ROUTE_REGISTER) })
 
 
 
@@ -78,7 +87,7 @@ fun Login_Screen(modifier: Modifier = Modifier) {
 
 @Preview
 @Composable
-private fun LOginprev() {
-    Login_Screen()
+private fun Loginprev() {
+    Login_Screen(rememberNavController())
 
 }
