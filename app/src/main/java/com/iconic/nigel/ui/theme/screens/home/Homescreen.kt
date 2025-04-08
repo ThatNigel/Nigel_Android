@@ -92,6 +92,14 @@ fun Home_Screen(navController: NavHostController) {
                 fontSize = 30.sp,
                 )
         }
+        Spacer(modifier=Modifier.height(30.dp) )
+        Button(onClick =  {navController.navigate(ROUTE_REGISTER) },
+            modifier = Modifier.width(300.dp)){
+            Text(text ="Dashboard",
+                fontSize = 30.sp,
+            )
+        }
+
 
     }
 
